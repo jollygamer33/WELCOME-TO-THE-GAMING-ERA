@@ -1,47 +1,41 @@
-// This script provides client-side validation for the sign-up form
-// with fun, gaming-themed feedback messages.
-
 document.addEventListener('DOMContentLoaded', () => {
-    // Get the sign-up form element
     const signupForm = document.getElementById('signupForm');
     
-    // Listen for the form submission event
     signupForm.addEventListener('submit', (event) => {
-        // Prevent the default form submission to handle it with our script
+        // Prevent the form from submitting immediately
         event.preventDefault(); 
         
         // Get the values from the input fields
-        const username = document.getElementById('username').value.trim();
-        const email = document.getElementById('email').value.trim();
-        const password = document.getElementById('password').value.trim();
+        const username = document.getElementById('username').value;
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
 
-        // Perform validation checks
+        // Simple validation checks with gaming-themed messages
         if (!username || !email || !password) {
-            alert('Error: All fields are required to start the mission!');
+            alert('Mission failed! All fields must be filled to proceed.');
             return;
         }
 
-        if (password.length < 8) {
-            alert('Warning: Password must be at least 8 characters for maximum security!');
+        if (password.length < 6) {
+            alert('Your password is too weak. Choose a password with at least 6 characters.');
             return;
         }
 
         if (!validateEmail(email)) {
-            alert('Critical Error: Invalid email address. Check your data link.');
+            alert('Invalid data packet! The email address format is incorrect.');
             return;
         }
+
+        // If validation passes, you would typically send the data to a server
+        // This is where you would add your backend logic (e.g., using fetch API)
+        alert('Welcome to the guild, ' + username + '! Your account has been created.');
         
-        // If validation is successful, this is where you would send the data to a server
-        // This part is for demonstration; replace this with your actual backend logic.
-        alert('Transmission successful! Welcome to the squad, ' + username + '!');
-        
-        // After successful server-side processing, you could redirect the user
-        // window.location.href = 'dashboard.html';
+        // Uncomment the line below to actually submit the form to a server
+        // signupForm.submit(); 
     });
 
-    // A helper function to check if an email address is valid
+    // Helper function to validate email format
     function validateEmail(email) {
-        // Regular expression for a basic email format validation
         const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return re.test(String(email).toLowerCase());
     }
