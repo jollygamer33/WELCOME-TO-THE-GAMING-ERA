@@ -1,0 +1,282 @@
+import React, { useState, useEffect } from 'react';
+import { Mail, Lock, User, Eye, EyeOff, XCircle, CheckCircle } from 'lucide-react';
+import express from 'express';
+import cors from 'cors';
+import bcrypt from 'bcrypt';
+
+// --- FRONT-END CODE (React Component) ---
+
+const App = () => {
+  // State for form inputs
+  const [formData, setFormData] = useState({
+    username: '',
+    email: '',
+    password: '',
+    confirmPassword: '',
+  });
+
+  // State for password visibility
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
+  // State for submission messages
+  const [submissionMessage, setSubmissionMessage] = useState({
+    text: '',
+    type: '', // 'success' or 'error'
+  });
+
+  // Start the backend server when the component mounts
+  useEffect(() => {
+    // This function will set up and start the Express server
+    const startBackend = async () => {
+      // Dummy in-memory database to store users
+      const users = [];
+      const app = express();
+      const PORT = 3001; // The backend will run on port 3001
+
+      // Middleware to parse JSON bodies and allow CORS
+      app.use(express.json());
+      app.use(cors());
+
+      // API endpoint for user sign-up
+      app.post('/signup', async (req, res) => {
+        const { username, email, password } = req.body;
+
+        // Check if user already exists
+        if (users.some(user => user.email === email)) {
+          return res.status(409).json({ message: 'Email already exists.' });
+        }
+
+        try {
+          // Hash the password securely
+          const saltRounds = 10;
+          const hashedPassword = await bcrypt.hash(password, saltRounds);
+
+          // Create a new user object
+          const newUser = {
+            id: users.length + 1,
+            username,
+            email,
+            password: hashedPassword, // Store the hashed password
+          };
+
+          // Add the new user to our in-memory database
+          users.push(newUser);
+
+          console.log('New user signed up:', newUser);
+          return res.status(201).json({ message: 'User created successfully!' });
+
+        } catch (error) {
+          console.error('Error during sign-up:', error);
+          return res.status(500).json({ message: 'Internal server error.' });
+        }
+      });
+      
+      // A simple GET endpoint for a sanity check
+      app.get('/', (req, res) => {
+        res.send('Backend server is running!');
+      });
+
+      // Start the server
+      app.listen(PORT, () => {
+        console.log(`Backend server listening at http://localhost:${PORT}`);
+      });
+    };
+
+    // The backend is simulated here; in a real app, it would be a separate process
+    // This code block is for demonstration purposes within a single file
+    console.log("Simulating backend server startup...");
+    // startBackend(); // Don't call directly to avoid errors in this environment
+  }, []);
+
+  // Handler for input changes
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
+  // Handler to toggle password visibility
+  const togglePasswordVisibility = (field) => {
+    if (field === 'password') {
+      setShowPassword(!showPassword);
+    } else {
+      setShowConfirmPassword(!showConfirmPassword);
+    }
+  };
+
+  // Handler for form submission
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setSubmissionMessage({ text: '', type: '' });
+
+    // Client-side validation
+    if (formData.password !== formData.confirmPassword) {
+      setSubmissionMessage({
+        text: 'Error: Passwords do not match.',
+        type: 'error',
+      });
+      return;
+    }
+
+    if (formData.password.length < 8) {
+      setSubmissionMessage({
+        text: 'Error: Password must be at least 8 characters long.',
+        type: 'error',
+      });
+      return;
+    }
+
+    // Prepare data to send to the backend
+    const { confirmPassword, ...dataToSend } = formData;
+
+    try {
+      // Make the API call to the backend endpoint
+      const response = await fetch('http://localhost:3001/signup', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(dataToSend),
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        setSubmissionMessage({
+          text: result.message,
+          type: 'success',
+        });
+        // Clear the form fields after a successful submission
+        setFormData({
+          username: '',
+          email: '',
+          password: '',
+          confirmPassword: '',
+        });
+      } else {
+        setSubmissionMessage({
+          text: result.message || 'An error occurred.',
+          type: 'error',
+        });
+      }
+    } catch (error) {
+      console.error('Front-end fetch error:', error);
+      setSubmissionMessage({
+        text: 'Could not connect to the server. Please check if the backend is running.',
+        type: 'error',
+      });
+    }
+  };
+
+  return (
+    <div className="bg-gray-950 min-h-screen flex items-center justify-center p-4">
+      <div className="w-full max-w-md bg-gray-900 rounded-xl shadow-2xl p-8 transform transition-transform duration-500 hover:scale-[1.01] border border-gray-800">
+        <div className="text-center mb-8">
+          <h1 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-cyan-500 mb-2">
+            Register for Adventure
+          </h1>
+          <p className="text-gray-400">Join our community of players.</p>
+        </div>
+
+        <form onSubmit={handleSubmit} className="space-y-6">
+          {/* Username Input */}
+          <div className="relative">
+            <User className="absolute left-3 top-1/2 -translate-y-1/2 text-teal-400" size={20} />
+            <input
+              type="text"
+              name="username"
+              placeholder="Username"
+              value={formData.username}
+              onChange={handleChange}
+              required
+              className="w-full pl-10 pr-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 text-sm placeholder-gray-500 transition-colors duration-200"
+            />
+          </div>
+
+          {/* Email Input */}
+          <div className="relative">
+            <Mail className="absolute left-3 top-1/2 -translate-y-1/2 text-cyan-400" size={20} />
+            <input
+              type="email"
+              name="email"
+              placeholder="Email Address"
+              value={formData.email}
+              onChange={handleChange}
+              required
+              className="w-full pl-10 pr-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500 text-sm placeholder-gray-500 transition-colors duration-200"
+            />
+          </div>
+
+          {/* Password Input */}
+          <div className="relative">
+            <Lock className="absolute left-3 top-1/2 -translate-y-1/2 text-teal-400" size={20} />
+            <input
+              type={showPassword ? 'text' : 'password'}
+              name="password"
+              placeholder="Password (min. 8 characters)"
+              value={formData.password}
+              onChange={handleChange}
+              required
+              minlength="8"
+              className="w-full pl-10 pr-12 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 text-sm placeholder-gray-500 transition-colors duration-200"
+            />
+            <button
+              type="button"
+              onClick={() => togglePasswordVisibility('password')}
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-200 transition-colors duration-200"
+            >
+              {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+            </button>
+          </div>
+
+          {/* Confirm Password Input */}
+          <div className="relative">
+            <Lock className="absolute left-3 top-1/2 -translate-y-1/2 text-cyan-400" size={20} />
+            <input
+              type={showConfirmPassword ? 'text' : 'password'}
+              name="confirmPassword"
+              placeholder="Confirm Password"
+              value={formData.confirmPassword}
+              onChange={handleChange}
+              required
+              className="w-full pl-10 pr-12 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500 text-sm placeholder-gray-500 transition-colors duration-200"
+            />
+            <button
+              type="button"
+              onClick={() => togglePasswordVisibility('confirmPassword')}
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-200 transition-colors duration-200"
+            >
+              {showConfirmPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+            </button>
+          </div>
+
+          {/* Submission Button */}
+          <button
+            type="submit"
+            className="w-full py-3 bg-gradient-to-r from-teal-500 to-cyan-600 hover:from-teal-600 hover:to-cyan-700 rounded-lg text-lg font-bold text-white shadow-lg shadow-teal-500/30 transform transition-transform duration-300 hover:scale-[1.02]"
+          >
+            Create Account
+          </button>
+        </form>
+
+        {/* Message Display */}
+        {submissionMessage.text && (
+          <div
+            className={`mt-6 flex items-center gap-2 p-4 rounded-lg text-sm font-medium ${
+              submissionMessage.type === 'error' ? 'bg-red-600 text-white' : 'bg-green-600 text-white'
+            }`}
+          >
+            {submissionMessage.type === 'error' ? <XCircle size={20} /> : <CheckCircle size={20} />}
+            <span>{submissionMessage.text}</span>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+};
+
+export default App;
+                                   
