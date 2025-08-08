@@ -279,4 +279,239 @@ const App = () => {
 };
 
 export default App;
-                                   
+ <!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Game Zone | The Ultimate Gaming Hub</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" xintegrity="sha512-iecdLmaskl7CV0sT9L7sLz51E/H+T9ZJ6J4U2fD8Fp8J+9I1pS6E7z5E95E8zE2t9+zJ7e/H+j9j1l6D8D7p+eQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- Custom styles for font and body background -->
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      color: #e2e8f0;
+    }
+  </style>
+</head>
+<body class="antialiased">
+
+  <!-- Header and Navigation -->
+  <header class="bg-gray-900 bg-opacity-70 backdrop-blur-sm sticky top-0 z-50 shadow-lg">
+    <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
+      <!-- Logo and Site Name -->
+      <a href="#" class="text-3xl font-extrabold text-blue-500 hover:text-blue-400 transition-colors duration-300">
+        <i class="fas fa-gamepad mr-2"></i>Game Zone
+      </a>
+
+      <!-- Mobile Menu Button -->
+      <button id="mobile-menu-button" class="text-white text-2xl md:hidden focus:outline-none">
+        <i class="fas fa-bars"></i>
+      </button>
+
+      <!-- Desktop Navigation Links -->
+      <div class="hidden md:flex space-x-8 text-lg font-medium">
+        <a href="#featured" class="text-white hover:text-blue-400 transition-colors duration-300">Featured</a>
+        <a href="#new-releases" class="text-white hover:text-blue-400 transition-colors duration-300">New Releases</a>
+        <a href="#popular" class="text-white hover:text-blue-400 transition-colors duration-300">Popular</a>
+        <a href="#contact" class="text-white hover:text-blue-400 transition-colors duration-300">Contact</a>
+      </div>
+    </nav>
+    
+    <!-- Mobile Navigation Menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-gray-900 bg-opacity-90 backdrop-blur-sm shadow-md">
+      <ul class="flex flex-col items-center py-4 space-y-4 text-xl">
+        <li><a href="#featured" class="text-white hover:text-blue-400 transition-colors duration-300 mobile-link">Featured</a></li>
+        <li><a href="#new-releases" class="text-white hover:text-blue-400 transition-colors duration-300 mobile-link">New Releases</a></li>
+        <li><a href="#popular" class="text-white hover:text-blue-400 transition-colors duration-300 mobile-link">Popular</a></li>
+        <li><a href="#contact" class="text-white hover:text-blue-400 transition-colors duration-300 mobile-link">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main class="py-12">
+    <!-- Hero Section -->
+    <section class="container mx-auto px-4 text-center py-24">
+      <h2 class="text-5xl md:text-7xl font-extrabold text-white leading-tight mb-4 animate-pulse">
+        Level Up Your Experience
+      </h2>
+      <p class="text-xl md:text-2xl text-gray-400 max-w-2xl mx-auto mb-8">
+        Discover the best games, find new friends, and join the community. Your next adventure awaits.
+      </p>
+      <a href="#new-releases" class="inline-block bg-blue-600 hover:bg-blue-700 text-white text-xl font-bold py-4 px-8 rounded-full shadow-lg transition-all transform hover:scale-105 active:scale-95 focus:outline-none focus:ring-4 focus:ring-blue-500 focus:ring-opacity-50">
+        Explore Games <i class="fas fa-arrow-right ml-2"></i>
+      </a>
+    </section>
+
+    <!-- Featured Games Section -->
+    <section id="featured" class="container mx-auto px-4 py-16">
+      <h3 class="text-4xl font-bold mb-8 text-center text-blue-400">Featured Games</h3>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Game Card 1 -->
+        <div class="bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:scale-105">
+          <!-- Placeholder Image -->
+          <img src="https://placehold.co/600x400/1f2937/d1d5db?text=Game+1" alt="Game 1" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h4 class="text-2xl font-bold mb-2">Epic Fantasy Quest</h4>
+            <p class="text-gray-400 text-sm mb-4">An immersive RPG with a vast open world and rich storytelling.</p>
+            <a href="#" class="inline-block bg-pink-600 hover:bg-pink-700 text-white font-semibold py-2 px-4 rounded-full transition-colors duration-300">Play Now</a>
+          </div>
+        </div>
+
+        <!-- Game Card 2 -->
+        <div class="bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:scale-105">
+          <!-- Placeholder Image -->
+          <img src="https://placehold.co/600x400/1f2937/d1d5db?text=Game+2" alt="Game 2" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h4 class="text-2xl font-bold mb-2">Galactic Shooter</h4>
+            <p class="text-gray-400 text-sm mb-4">Fast-paced multiplayer action in a futuristic space setting.</p>
+            <a href="#" class="inline-block bg-pink-600 hover:bg-pink-700 text-white font-semibold py-2 px-4 rounded-full transition-colors duration-300">Play Now</a>
+          </div>
+        </div>
+
+        <!-- Game Card 3 -->
+        <div class="bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:scale-105">
+          <!-- Placeholder Image -->
+          <img src="https://placehold.co/600x400/1f2937/d1d5db?text=Game+3" alt="Game 3" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h4 class="text-2xl font-bold mb-2">Puzzle Adventure</h4>
+            <p class="text-gray-400 text-sm mb-4">A mind-bending journey through ancient ruins and clever puzzles.</p>
+            <a href="#" class="inline-block bg-pink-600 hover:bg-pink-700 text-white font-semibold py-2 px-4 rounded-full transition-colors duration-300">Play Now</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- New Releases Section -->
+    <section id="new-releases" class="container mx-auto px-4 py-16">
+      <h3 class="text-4xl font-bold mb-8 text-center text-blue-400">New Releases</h3>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Game Thumbnail 1 -->
+        <a href="#" class="block bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:scale-105">
+          <img src="https://placehold.co/400x400/1f2937/d1d5db?text=New+Game+1" alt="New Game 1" class="w-full h-48 object-cover">
+          <div class="p-4 text-center">
+            <h4 class="text-xl font-bold">Cyber Heist</h4>
+          </div>
+        </a>
+        <!-- Game Thumbnail 2 -->
+        <a href="#" class="block bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:scale-105">
+          <img src="https://placehold.co/400x400/1f2937/d1d5db?text=New+Game+2" alt="New Game 2" class="w-full h-48 object-cover">
+          <div class="p-4 text-center">
+            <h4 class="text-xl font-bold">Racing Legends</h4>
+          </div>
+        </a>
+        <!-- Game Thumbnail 3 -->
+        <a href="#" class="block bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:scale-105">
+          <img src="https://placehold.co/400x400/1f2937/d1d5db?text=New+Game+3" alt="New Game 3" class="w-full h-48 object-cover">
+          <div class="p-4 text-center">
+            <h4 class="text-xl font-bold">Medieval War</h4>
+          </div>
+        </a>
+        <!-- Game Thumbnail 4 -->
+        <a href="#" class="block bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:scale-105">
+          <img src="https://placehold.co/400x400/1f2937/d1d5db?text=New+Game+4" alt="New Game 4" class="w-full h-48 object-cover">
+          <div class="p-4 text-center">
+            <h4 class="text-xl font-bold">Space Colony</h4>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- Popular Titles Section -->
+    <section id="popular" class="container mx-auto px-4 py-16">
+      <h3 class="text-4xl font-bold mb-8 text-center text-blue-400">Popular Titles</h3>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Game Card 4 -->
+        <div class="bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:scale-105">
+          <!-- Placeholder Image -->
+          <img src="https://placehold.co/600x400/1f2937/d1d5db?text=Game+4" alt="Game 4" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h4 class="text-2xl font-bold mb-2">Fantasy Realms</h4>
+            <p class="text-gray-400 text-sm mb-4">A cooperative adventure game with stunning graphics and a deep narrative.</p>
+            <a href="#" class="inline-block bg-pink-600 hover:bg-pink-700 text-white font-semibold py-2 px-4 rounded-full transition-colors duration-300">Details</a>
+          </div>
+        </div>
+
+        <!-- Game Card 5 -->
+        <div class="bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:scale-105">
+          <!-- Placeholder Image -->
+          <img src="https://placehold.co/600x400/1f2937/d1d5db?text=Game+5" alt="Game 5" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h4 class="text-2xl font-bold mb-2">Tactical Warfare</h4>
+            <p class="text-gray-400 text-sm mb-4">A strategy game where every decision can turn the tide of battle.</p>
+            <a href="#" class="inline-block bg-pink-600 hover:bg-pink-700 text-white font-semibold py-2 px-4 rounded-full transition-colors duration-300">Details</a>
+          </div>
+        </div>
+        
+        <!-- Game Card 6 -->
+        <div class="bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:scale-105">
+          <!-- Placeholder Image -->
+          <img src="https://placehold.co/600x400/1f2937/d1d5db?text=Game+6" alt="Game 6" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h4 class="text-2xl font-bold mb-2">Arcade Runner</h4>
+            <p class="text-gray-400 text-sm mb-4">A classic-style endless runner with modern graphics and challenging levels.</p>
+            <a href="#" class="inline-block bg-pink-600 hover:bg-pink-700 text-white font-semibold py-2 px-4 rounded-full transition-colors duration-300">Details</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="container mx-auto px-4 py-16 text-center">
+      <h3 class="text-4xl font-bold mb-8 text-blue-400">Join Our Community</h3>
+      <p class="text-xl text-gray-400 mb-8 max-w-xl mx-auto">
+        Sign up for our newsletter to get the latest updates on new games, events, and exclusive offers.
+      </p>
+      <form class="max-w-xl mx-auto flex flex-col sm:flex-row gap-4">
+        <input 
+          type="email" 
+          placeholder="Enter your email" 
+          class="flex-1 p-4 rounded-xl bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors duration-300"
+          aria-label="Email address"
+        >
+        <button type="submit" class="bg-green-600 hover:bg-green-700 text-white font-bold py-4 px-8 rounded-xl shadow-lg transition-all transform hover:scale-105 active:scale-95 focus:outline-none focus:ring-4 focus:ring-green-300">
+          Sign Up
+        </button>
+      </form>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 bg-opacity-70 text-gray-400 py-8">
+    <div class="container mx-auto px-4 text-center">
+      <div class="flex justify-center space-x-6 text-2xl mb-4">
+        <a href="#" class="hover:text-white transition-colors duration-300"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="hover:text-white transition-colors duration-300"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" class="hover:text-white transition-colors duration-300"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="hover:text-white transition-colors duration-300"><i class="fab fa-youtube"></i></a>
+      </div>
+      <p class="text-sm">&copy; 2024 Game Zone. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // JavaScript for mobile menu functionality
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileLinks = document.querySelectorAll('.mobile-link');
+
+    // Toggle the mobile menu visibility on button click
+    mobileMenuButton.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Hide the mobile menu when a link is clicked
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+      });
+    });
+  </script>
+
+</body>
+      </html>
+          
