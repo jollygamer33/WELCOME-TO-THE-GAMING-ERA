@@ -1,0 +1,83 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #121212; /* Dark background */
+    color: #f0f0f0; /* Light text color */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-image: url('https://images.unsplash.com/photo-1542751371-adc38148e658?q=80&w=2940&auto=format&fit=crop'); /* Replace with a gaming background image */
+    background-size: cover;
+    background-position: center;
+}
+
+.container {
+    background: rgba(28, 28, 28, 0.9); /* Semi-transparent dark container */
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.2); /* Cyan glow effect */
+    width: 350px;
+    backdrop-filter: blur(5px);
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #00ffff; /* Neon cyan color */
+    text-shadow: 0 0 8px rgba(0, 255, 255, 0.6);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #aaaaaa;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #00ffff; /* Neon cyan border */
+    background-color: #2a2a2a; /* Darker input background */
+    color: #f0f0f0;
+    border-radius: 6px;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus {
+    outline: none;
+    box-shadow: 0 0 10px #00ffff; /* Stronger glow on focus */
+    background-color: #3a3a3a;
+}
+
+button {
+    width: 100%;
+    padding: 15px;
+    background-color: #ff00ff; /* Neon magenta color */
+    border: none;
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 6px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+button:hover {
+    background-color: #cc00cc; /* Darker magenta on hover */
+    box-shadow: 0 0 15px rgba(255, 0, 255, 0.6);
+}
