@@ -17,5 +17,6 @@ Anticipation for Grand Theft Auto VI is at an all-time high, promising a return 
 This time, Rockstar Games is introducing a criminal duo, Lucia and Jason, whose modern-day Bonnie and Clyde-inspired story unfolds across a massive, meticulously detailed map of the fictional state of Leonida.
 ![17546540698676957210958120092608](https://github.com/user-attachments/assets/7886e022-b278-44f5-a603-71b987dcab52)
 With next-generation graphics, enhanced gameplay, and a world brimming with satirical social commentary, the game is poised to be an immersive, high-stakes adventure that will redefine the open-world genre once again. Get ready to dive into the experience of a vibrant, dangerous, and unforgettable world.
+
 @ 2025 All rights reserved 
 
