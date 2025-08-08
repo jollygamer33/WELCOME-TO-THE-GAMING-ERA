@@ -81,3 +81,114 @@ button:hover {
     background-color: #cc00cc; /* Darker magenta on hover */
     box-shadow: 0 0 15px rgba(255, 0, 255, 0.6);
 }
+/*
+ * This CSS file styles the sign-up form with a dark, futuristic gaming theme.
+ * It uses a background image, neon colors, and subtle glow effects.
+ */
+
+body {
+    /* Set a dark background and a gaming-inspired font */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #121212;
+    color: #f0f0f0;
+
+    /* Center the content on the screen */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+
+    /* Add a full-screen background image for a more immersive feel */
+    background-image: url('https://placehold.co/1920x1080/1a1a1a/cccccc?text=GAMING+BACKGROUND'); /* Placeholder - replace with your own image */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.container {
+    /* Style the main form container */
+    background: rgba(28, 28, 28, 0.9); /* Semi-transparent dark background */
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.2); /* Soft cyan glow */
+    width: 350px;
+    max-width: 90%;
+    backdrop-filter: blur(5px); /* Adds a cool blur effect to the background behind the form */
+    border: 1px solid rgba(0, 255, 255, 0.1);
+}
+
+h2 {
+    /* Style the main heading */
+    text-align: center;
+    margin-bottom: 30px;
+    color: #00ffff; /* Neon cyan color */
+    text-shadow: 0 0 8px rgba(0, 255, 255, 0.6);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.form-group {
+    /* Spacing for each input group */
+    margin-bottom: 20px;
+}
+
+label {
+    /* Style the input labels */
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #aaaaaa;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    /* Style the input fields */
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #00ffff; /* Neon cyan border */
+    background-color: #2a2a2a;
+    color: #f0f0f0;
+    border-radius: 6px;
+    box-sizing: border-box; /* Ensures padding doesn't affect width */
+    transition: all 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus {
+    /* Highlight the input field when it's focused */
+    outline: none;
+    box-shadow: 0 0 10px #00ffff;
+    background-color: #3a3a3a;
+}
+
+button {
+    /* Style the sign-up button */
+    width: 100%;
+    padding: 15px;
+    background-color: #ff00ff; /* Neon magenta color */
+    border: none;
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 6px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+button:hover {
+    /* Change button style on hover */
+    background-color: #cc00cc;
+    box-shadow: 0 0 15px rgba(255, 0, 255, 0.6);
+}
+
+/* Make the layout responsive for smaller screens */
+@media (max-width: 400px) {
+    .container {
+        padding: 20px;
+    }
+    }
